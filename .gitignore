@@ -132,4 +132,4 @@ dmypy.json
 
 # Pyre type checke
 .pyre/
-.*xlsx
+*.xlsx
