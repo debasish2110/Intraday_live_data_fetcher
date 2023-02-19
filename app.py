@@ -1,4 +1,5 @@
 from Trader.fetcher import Trade, TradeHandler, datetime
+from utils import utilities
 
 ######################################
 #### creating Trade class object. ####
@@ -40,3 +41,9 @@ else:
 url_to_fetch = f'https://priceapi.moneycontrol.com/techCharts/indianMarket/stock/history?symbol=RELIANCE&resolution=5&from={start_time}&to={end_time}&countback=329&currencyCode=INR'
 data_frame = trader.resp_to_dataframe(url_to_fetch)
 print(data_frame)
+try:
+    path = utilities.save_to_xls(data_frame)
+except Exception as e:
+    raise TradeHandler('Exception occured while saving dataframe to xls...')
+
+print(f"Dataframe successfully saved to xls at : {path}")
